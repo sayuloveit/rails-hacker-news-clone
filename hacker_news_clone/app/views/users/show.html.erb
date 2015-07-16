@@ -7,7 +7,7 @@
     <div>
       <%= index + 1 %>.
       <%= post.title %>
-       <% if @current_user && show_edit_actions(post) %>
+      <% if @current_user && show_edit_actions(post) %>
           <%= link_to 'edit', edit_post_path(post) %>
           <%= link_to 'destroy', post_path(post), method: :delete %>
       <% end %>
@@ -19,8 +19,13 @@
 <h2>Comments</h2>
 <div>
   <% find_user_comments(@user).each_with_index do |comment, index| %>
-    <%= index + 1 %>.
-    <%= comment.content %>
-    <p>add edit actions for user only later </p>
+    <div>
+      <%= index + 1 %>.
+      <%= comment.content %>
+       <% if @current_user && show_edit_actions(comment) %>
+          <%= link_to 'edit', edit_post_comment_path(comment.post, comment) %>
+          <%= link_to 'destroy', post_comment_path(comment.post, comment), method: :delete %>
+      <% end %>
+    </div>
   <% end %>
 </div>

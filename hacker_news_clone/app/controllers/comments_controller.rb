@@ -10,6 +10,27 @@ class CommentsController < ApplicationController
     redirect_to post_path(post)
   end
 
+  def edit
+    @post = Post.find_by_id(id: params[:post_id])
+    @comment = Comment.find_by_id(id: params[:id])
+  end
+
+  def update
+
+
+  end
+
+  def destroy
+    comment = Comment.find_by(id: params[:id])
+
+    if comment
+      comment.destroy
+      redirect_to user_path(@current_user)
+    else
+      # redirect back to user's page, error handling
+      redirect_to user_path(@current_user)
+    end
+  end
 
   private
   def comment_params
