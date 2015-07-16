@@ -6,10 +6,12 @@
   <% end %>
 </div>
 
+<br>
+
 <div>
   <% @posts.each do |post| %>
-
-    <%= post.title %>
-
+    <div>
+      <%=  link_to post.title, url_for(extlink(post.url)) %>
+    </div>
   <% end %>
 </div>
