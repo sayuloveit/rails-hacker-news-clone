@@ -14,9 +14,6 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   get 'logout' => 'sessions#destroy'
 
-  post 'upvote' => 'votes#create?like=true'
-  post 'downvote' => 'vote#create?like=false'
-
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

@@ -7,4 +7,8 @@ module ApplicationHelper
     object.user.username
   end
 
+  def find_user(object)
+    object.user
+  end
+
 end
