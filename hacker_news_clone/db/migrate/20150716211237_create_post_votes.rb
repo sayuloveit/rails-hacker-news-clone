@@ -1,9 +1,9 @@
-class CreateCommentvotes < ActiveRecord::Migration
+class CreatePostVotes < ActiveRecord::Migration
   def change
-    create_table :commentvotes do |t|
+    create_table :post_votes do |t|
       t.boolean :like, null: false
       t.integer :user_id, null: false
-      t.integer :comment_id, null: false
+      t.integer :post_id, null: false
 
       t.timestamps null: false
     end

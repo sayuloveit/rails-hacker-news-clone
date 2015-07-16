@@ -9,8 +9,8 @@
 <body>
 
 <header>
-  <% if session[:user_id] %>
     <div> <%= link_to 'home', root_path %> </div>
+  <% if session[:user_id] %>
     <div> <%=  link_to 'signout', logout_path %> </div>
   <% else %>
     <div> <%= link_to 'login', login_path %> </div>
