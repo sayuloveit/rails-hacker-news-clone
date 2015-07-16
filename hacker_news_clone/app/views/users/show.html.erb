@@ -1,0 +1,26 @@
+<h1> This is <%= @user.username %>'s page </h1>
+
+
+<h2>Posts</h2>
+<div>
+  <% find_user_posts(@user).each_with_index do |post, index| %>
+    <div>
+      <%= index + 1 %>.
+      <%= post.title %>
+       <% if @current_user && show_edit_actions(post) %>
+          <%= link_to 'edit', edit_post_path(post) %>
+          <%= link_to 'destroy', post_path(post), method: :delete %>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
+
+<h2>Comments</h2>
+<div>
+  <% find_user_comments(@user).each_with_index do |comment, index| %>
+    <%= index + 1 %>.
+    <%= comment.content %>
+    <p>add edit actions for user only later </p>
+  <% end %>
+</div>
