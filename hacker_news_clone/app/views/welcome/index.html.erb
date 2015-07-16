@@ -1,8 +1,15 @@
 <h3>Welcome to mini Hacker News</h3>
 
-<% @posts.each do |post| %>
+<div>
+  <% if session[:user_id] %>
+    <%= link_to 'add new post', new_post_path %>
+  <% end %>
+</div>
 
-  <%= post.title %>
+<div>
+  <% @posts.each do |post| %>
 
-<% end %>
+    <%= post.title %>
 
+  <% end %>
+</div>
