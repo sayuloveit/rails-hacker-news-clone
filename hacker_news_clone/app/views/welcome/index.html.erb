@@ -13,6 +13,7 @@
     <div>
       <%= index + 1 %>.
       <%= link_to "#{post.title} (#{post.url})", url_for(extlink(post.url)) %>
+      by: <%= find_username(post) %>
       <%= link_to 'show', post_path(post) %>
       <% if @current_user && show_edit_actions(post) %>
         <%= link_to 'edit', edit_post_path(post) %>

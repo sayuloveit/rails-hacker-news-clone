@@ -9,8 +9,11 @@ Comments:
   <% @comments.each_with_index do |comment, index| %>
     <div>
       <%= index + 1 %>.
-      <%= comment.content %>
-      <p> add edit actions</p>
+      by: <%= find_username(comment) %>
+      <div>
+        <%= comment.content %>
+        <p> add edit actions</p>
+      </div>
 
     <div>
   <% end %>
