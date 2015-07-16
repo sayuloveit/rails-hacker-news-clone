@@ -1,0 +1,12 @@
+<h1> <%= @post.title %> </h1>
+
+<div>
+  <p>Add add comment form here</p>
+</div>
+
+<div>
+  <p>Comments:</p>
+  <% @comments.each do |comment| %>
+    <%= comment.content %>
+  <% end %>
+</div>
