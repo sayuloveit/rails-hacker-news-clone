@@ -1,12 +1,17 @@
 <h1> <%= @post.title %> </h1>
 
 <div>
-  <p>Add add comment form here</p>
+  <%= render partial: "comments/form", locals: { post: @post, comment: @comment }%>
 </div>
 
+Comments:
 <div>
-  <p>Comments:</p>
-  <% @comments.each do |comment| %>
-    <%= comment.content %>
+  <% @comments.each_with_index do |comment, index| %>
+    <div>
+      <%= index + 1 %>.
+      <%= comment.content %>
+      <p> add edit actions</p>
+
+    <div>
   <% end %>
 </div>
