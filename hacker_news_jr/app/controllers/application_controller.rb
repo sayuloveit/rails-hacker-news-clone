@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :current_user
   # skip_before_action :require_logged_in, only: [:new, :create]
 
+  #don't like this since it makes things take too long,
+  #things work with it for now, need to change later
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
   end
