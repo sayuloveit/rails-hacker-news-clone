@@ -15,9 +15,23 @@
 //= require turbolinks
 //= require_tree .
 
-// $(document).ready(function(){
-//   $()
+$(document).ready(function(){
+  $('.upvote').on('click', function(event){
+      event.preventDefault();
+      event.stopPropagation();
 
-// })
+      $.ajax({
+        url: event.target.href,
+        method: 'post',
+        data: $(event.target).serialize(),
+        dataType: 'json'
+      }).success(function(response){
+        console.log('ajax!');
+      }).fail(function(response){
+        console.log('nope');
+      })
+  })
+
+})
 
 
