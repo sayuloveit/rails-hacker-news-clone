@@ -10,7 +10,7 @@
 
 <div>
   <% @posts.each_with_index do |post, index| %>
-    <div>
+    <div class="postvote">
       <span><%= upvote_count(post) %></span>
       <%= link_to 'upvote', post_votepost_path(post, vote: :true), method: :post, class: 'upvote' %>
       <%= index + 1 %>.

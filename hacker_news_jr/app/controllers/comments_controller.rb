@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   def create
+    # CN: Move the .merge to the strong_params for cleaner code
     comment = Comment.new(comment_params.merge({user_id: session[:user_id]}))
     post = Post.find_by_id(params[:post_id])
     # add error handling
@@ -11,12 +12,15 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @post = Post.find_by_id(id: params[:post_id])
+    # Look into .include for situations when you're doing lots of db calls
+    # Use your associations to find @post
+    # @post = Post.find_by_id(id: params[:post_id])
     @comment = Comment.find_by_id(id: params[:id])
+    @post = @comment.post
   end
 
   def update
-
+    # If you don't want people to update comments, delete this action
 
   end
 

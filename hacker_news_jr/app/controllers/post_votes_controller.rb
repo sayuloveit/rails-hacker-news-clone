@@ -2,12 +2,18 @@ class PostVotesController < ApplicationController
 
   def create
     # byebug
+        p "************************************"
+        p params
+        p "************************************"
     vote = PostVote.new(user_id: session[:user_id], post_id: params[:post_id], like: params[:vote] )
     if vote.save
       vote_count = Post.find_by(id: params[:post_id].to_i).post_votes.count
       # byebug
       if request.xhr?
-        {vote_count: vote_count}.to_json
+            p "************************************"
+            p "in request.xhr?"
+            p "************************************"
+        render json: {vote_count: vote_count}.to_json
       else
         redirect_to root_path
       end

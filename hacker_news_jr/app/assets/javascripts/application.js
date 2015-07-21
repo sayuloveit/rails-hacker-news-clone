@@ -15,10 +15,12 @@
 //= require turbolinks
 //= require_tree .
 
+// Keep application.js empty except for the commented out stuff that's in here
+// This would go in a 'votes.js' file.
 $(document).ready(function(){
-  $('.upvote').on('click', function(event){
+  $('.postvote').on('click', '.upvote', function(event){
       event.preventDefault();
-      event.stopPropagation();
+      // event.stopPropagation();
 
       $.ajax({
         url: event.target.href,
@@ -26,9 +28,9 @@ $(document).ready(function(){
         data: $(event.target).serialize(),
         dataType: 'json'
       }).success(function(response){
-        console.log('ajax!');
+        console.log('ajax!: ', response);
       }).fail(function(response){
-        console.log('nope');
+        console.log('nope: ', response);
       })
   })
 

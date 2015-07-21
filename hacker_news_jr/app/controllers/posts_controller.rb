@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   def index
+    # What if it had 1,000,000 posts? Set a limit.
     @posts = Post.order(created_at: 'desc')
   end
 
@@ -13,6 +14,7 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
 
     user.posts << post
+    #errrrooorrrr handling
     redirect_to root_path
   end
 
