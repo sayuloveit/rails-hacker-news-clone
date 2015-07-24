@@ -27,6 +27,7 @@ $(document).ready(function(){
         dataType: 'json'
       }).success(function(response){
         console.log('ajax!');
+        $('#' + response.post_id ).text(response.vote_count)
       }).fail(function(response){
         console.log('nope');
       })

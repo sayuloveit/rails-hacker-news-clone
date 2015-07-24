@@ -11,7 +11,7 @@
 <div>
   <% @posts.each_with_index do |post, index| %>
     <div>
-      <span><%= upvote_count(post) %></span>
+      <span id="<%= post.id %>"><%= upvote_count(post) %></span>
       <%= link_to 'upvote', post_votepost_path(post, vote: :true), method: :post, class: 'upvote' %>
       <%= index + 1 %>.
       <%= link_to "#{post.title} (#{post.url})", url_for(extlink(post.url)) %>
