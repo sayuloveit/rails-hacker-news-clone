@@ -23,6 +23,17 @@ describe "login and signup tests", :type => :feature do
     expect(page).to have_content 'Welcome to Hacker News Jr'
   end
 
+  it "user can signout" do
+    visit '/login'
+    within(".signup") do
+      fill_in 'Username', :with => 'user'
+      fill_in 'Password', :with => 'password'
+    end
+    click_button 'signup'
+    click_link 'signout'
+    expect(page).to have_content 'login'
+  end
+
 end
 
 describe "user post actions", :type => :feature do
@@ -62,7 +73,6 @@ describe "user post actions", :type => :feature do
     test_user.posts.create(title: 'google', url: 'www.google.com')
     visit "/users/#{test_user.id}"
     click_link 'edit'
-    save_and_open_page
     within(".edit_post") do
       fill_in 'Title', :with => 'the G'
     end
