@@ -49,4 +49,25 @@ describe "user post creation", :type => :feature do
     expect(page).to have_content 'the g'
   end
 
+  it 'user can delete their own post' do
+    old_post_count = test_user.posts.count
+    test_user.posts.create(title: 'google', url: 'www.google.com')
+    new_post_count = test_user.posts.count
+    visit "/users/#{test_user.id}"
+    click_link 'destroy'
+    expect(old_post_count).to eq(new_post_count - 1)
+  end
+
+  it 'user can edit their own post' do
+    test_user.posts.create(title: 'google', url: 'www.google.com')
+    visit "/users/#{test_user.id}"
+    click_link 'edit'
+    save_and_open_page
+    within(".edit_post") do
+      fill_in 'Title', :with => 'the G'
+    end
+    click_button 'Update Post'
+    expect(page).to have_content 'the G'
+  end
+
 end
