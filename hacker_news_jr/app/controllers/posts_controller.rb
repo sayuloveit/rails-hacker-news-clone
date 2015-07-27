@@ -27,9 +27,13 @@ class PostsController < ApplicationController
   end
 
   def update
-    Post.update(params[:id], post_params)
-    # error handling later
-    redirect_to post_path(params[:id])
+    @post = Post.find_by(id: params[:id])
+
+    if @post.update(post_params)
+      redirect_to post_path(params[:id])
+    else
+      render :edit
+    end
   end
 
   def destroy
