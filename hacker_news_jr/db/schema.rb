@@ -48,14 +48,6 @@ ActiveRecord::Schema.define(version: 20150716211717) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "postvotes", force: :cascade do |t|
-    t.boolean  "like",       null: false
-    t.integer  "user_id",    null: false
-    t.integer  "post_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
     t.string   "password_digest", null: false
