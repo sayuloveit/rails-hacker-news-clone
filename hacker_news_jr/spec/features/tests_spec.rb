@@ -25,7 +25,7 @@ describe "login and signup tests", :type => :feature do
 
 end
 
-describe "user post creation", :type => :feature do
+describe "user post actions", :type => :feature do
 
   let! (:test_user) { User.create(username: 'tester', password: 'password') }
 
