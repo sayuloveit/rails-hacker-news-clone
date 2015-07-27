@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    user = User.find_by_id(session[:user_id])
+    user = User.find_by_id(current_user.id)
     post = Post.new(post_params)
 
     user.posts << post
