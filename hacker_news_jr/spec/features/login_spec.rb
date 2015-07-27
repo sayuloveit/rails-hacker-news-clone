@@ -1,17 +1,26 @@
 require 'rails_helper'
 
-describe "the signin process", :type => :feature do
-  # before :each do
-  #   User.make(:email => 'user@example.com', :password => 'password')
-  # end
+describe "the signup process", :type => :feature do
 
-  it "signs me in" do
-    visit '/sessions/new'
-    within("#session") do
-      fill_in 'Email', :with => 'user@example.com'
+  it "user can login and then get redirected to main page" do
+    User.create(:username => 'user@example.com', :password => 'password')
+    visit '/login'
+    within(".login") do
+      fill_in 'Username', :with => 'user@example.com'
       fill_in 'Password', :with => 'password'
     end
-    click_button 'Sign in'
-    expect(page).to have_content 'Success'
+    click_button 'login'
+    expect(page).to have_content 'Welcome to Hacker News Jr'
   end
+
+  it "user can sign up and then get redirected to main page" do
+    visit '/login'
+    within(".signup") do
+      fill_in 'Username', :with => 'user@example.com'
+      fill_in 'Password', :with => 'password'
+    end
+    click_button 'signup'
+    expect(page).to have_content 'Welcome to Hacker News Jr'
+  end
+
 end
