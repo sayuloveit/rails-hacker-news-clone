@@ -1,6 +1,6 @@
 <h1>Edit this post!</h1>
 
-<% if @current_user %>
+<% if current_user %>
   <div>
     <%= render partial: 'form', locals: { post: @post } %>
   </div>

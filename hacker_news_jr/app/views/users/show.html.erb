@@ -7,7 +7,7 @@
     <div>
       <%= index + 1 %>.
       <%= post.title %>
-      <% if @current_user && show_edit_actions(post) %>
+      <% if current_user && show_edit_actions(post) %>
           <%= link_to 'edit', edit_post_path(post) %>
           <%= link_to 'destroy', post_path(post), method: :delete %>
       <% end %>
